@@ -1,24 +1,42 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Universo em Movimento 🌌</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <canvas id="estrelas"></canvas>
+/* Fundo realista da galáxia */
+body, html {
+  margin: 0; padding: 0; height: 100%;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  color: white;
+  background: url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+  background-size: cover;
+}
 
-  <div class="conteudo">
-    <h1>🌌 Universo em Movimento 🌌</h1>
-    <p>Passe o mouse sobre os planetas e descubra curiosidades!</p>
-  </div>
+#particles-js {
+  position: fixed;
+  width: 100%; height: 100%;
+  z-index: 0;
+}
 
-  <!-- ✅ Div onde os planetas serão adicionados -->
-  <div id="universe"></div>
+.conteudo {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  margin-top: 2rem;
+  font-weight: bold;
+  text-shadow: 0 0 10px #000;
+}
 
-  <!-- ✅ Tooltip já está sendo criada via JS -->
+#infoBox {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.7);
+  padding: 15px 25px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  max-width: 400px;
+  box-shadow: 0 0 15px #0ff;
+  z-index: 10;
+}
 
-  <script src="script.js"></script>
-</body>
-</html>
+.hidden {
+  display: none;
+}
