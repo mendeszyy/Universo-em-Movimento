@@ -1,42 +1,42 @@
-body {
-  margin: 0;
-  padding: 0;
-  background: black;
-  color: white;
-  font-family: Arial, sans-serif;
-  text-align: center;
-  overflow: hidden; /* Para evitar barras de rolagem com os planetas animados */
-  height: 100vh; /* Garante que o body ocupe toda a altura da tela */
-}
-
-#universe {
-  position: relative;
-  width: 100%;
-  height: 100vh;
+/* Fundo realista da galáxia */
+body, html {
+  margin: 0; padding: 0; height: 100%;
   overflow: hidden;
-}
-
-.planet {
-  position: absolute;
-  border-radius: 50%;
-  cursor: pointer;
-  transform-origin: center center;
-  transition: transform 0.2s;
-  z-index: 2; /* Fica acima do fundo e atrás da tooltip */
-}
-
-.planet:hover {
-  transform: scale(1.2);
-}
-
-.tooltip {
-  position: absolute;
-  background: rgba(0, 0, 0, 0.8);
+  font-family: Arial, sans-serif;
   color: white;
-  padding: 5px 10px;
-  border-radius: 8px;
-  font-size: 14px;
+  background: url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+  background-size: cover;
+}
+
+#particles-js {
+  position: fixed;
+  width: 100%; height: 100%;
+  z-index: 0;
+}
+
+.conteudo {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  margin-top: 2rem;
+  font-weight: bold;
+  text-shadow: 0 0 10px #000;
+}
+
+#infoBox {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.7);
+  padding: 15px 25px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  max-width: 400px;
+  box-shadow: 0 0 15px #0ff;
+  z-index: 10;
+}
+
+.hidden {
   display: none;
-  pointer-events: none;
-  z-index: 1000;
 }
