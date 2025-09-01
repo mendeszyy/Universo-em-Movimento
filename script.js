@@ -1,42 +1,49 @@
-/* Fundo realista da galáxia */
-body, html {
-  margin: 0; padding: 0; height: 100%;
-  overflow: hidden;
-  font-family: Arial, sans-serif;
-  color: white;
-  background: url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
-  background-size: cover;
+// Configuração básica do particles.js
+particlesJS('particles-js', {
+  particles: {
+    number: { value: 100 },
+    color: { value: '#ffffff' },
+    shape: { type: 'circle' },
+    opacity: { value: 0.8 },
+    size: { value: 2 },
+    move: { enable: true, speed: 0.5 }
+  }
+});
+
+// Planetas e suas curiosidades
+const planets = [
+  { name: "Mercúrio", info: "Planeta mais próximo do Sol e o menor do sistema solar." },
+  { name: "Vênus", info: "Chamado de 'estrela d'alva', tem temperaturas altíssimas." },
+  { name: "Terra", info: "Nosso lar, o único planeta conhecido com vida." },
+  { name: "Marte", info: "Conhecido como planeta vermelho, pode ter abrigado água." },
+  { name: "Júpiter", info: "Maior planeta do sistema solar, com uma grande mancha vermelha." },
+  { name: "Saturno", info: "Famoso por seus belos anéis." },
+  { name: "Urano", info: "Planeta que gira de lado e tem cor azul-esverdeada." },
+  { name: "Netuno", info: "O mais distante do Sol, com ventos fortíssimos." }
+];
+
+let currentIndex = 0;
+const infoBox = document.getElementById('infoBox');
+
+function showPlanetInfo(index) {
+  const planet = planets[index];
+  infoBox.innerHTML = `<b>${planet.name}</b><br>${planet.info}`;
+  infoBox.classList.remove('hidden');
 }
 
-#particles-js {
-  position: fixed;
-  width: 100%; height: 100%;
-  z-index: 0;
+// Ocultar infoBox após 5 segundos
+function hideInfo() {
+  infoBox.classList.add('hidden');
 }
 
-.conteudo {
-  position: relative;
-  z-index: 10;
-  text-align: center;
-  margin-top: 2rem;
-  font-weight: bold;
-  text-shadow: 0 0 10px #000;
-}
+// Detecta a tecla espaço
+document.addEventListener('keydown', (e) => {
+  if (e.code === 'Space') {
+    e.preventDefault();
+    showPlanetInfo(currentIndex);
+    clearTimeout(window.hideTimeout);
+    window.hideTimeout = setTimeout(hideInfo, 5000);
+    currentIndex = (currentIndex + 1) % planets.length;
+  }
+});
 
-#infoBox {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0,0,0,0.7);
-  padding: 15px 25px;
-  border-radius: 10px;
-  font-size: 1.1rem;
-  max-width: 400px;
-  box-shadow: 0 0 15px #0ff;
-  z-index: 10;
-}
-
-.hidden {
-  display: none;
-}
