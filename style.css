@@ -1,42 +1,80 @@
-/* Fundo realista da galáxia */
-body, html {
-  margin: 0; padding: 0; height: 100%;
+/* Reset e estilo base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: radial-gradient(ellipse at center, #000 0%, #050d1a 100%);
+  color: #fff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   overflow: hidden;
-  font-family: Arial, sans-serif;
-  color: white;
-  background: url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
-  background-size: cover;
 }
 
-#particles-js {
-  position: fixed;
-  width: 100%; height: 100%;
-  z-index: 0;
-}
-
-.conteudo {
-  position: relative;
-  z-index: 10;
+header {
   text-align: center;
-  margin-top: 2rem;
-  font-weight: bold;
-  text-shadow: 0 0 10px #000;
-}
-
-#infoBox {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0,0,0,0.7);
-  padding: 15px 25px;
-  border-radius: 10px;
-  font-size: 1.1rem;
-  max-width: 400px;
-  box-shadow: 0 0 15px #0ff;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 0;
+  width: 100%;
   z-index: 10;
 }
 
-.hidden {
+header h1 {
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
+header p {
+  font-size: 1rem;
+  color: #ccc;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  font-size: 0.8rem;
+  color: #aaa;
+  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Universo */
+#universe {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Planetas */
+.planet {
+  position: absolute;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  transition: transform 0.2s;
+}
+
+.planet:hover {
+  transform: scale(1.2);
+}
+
+/* Tooltip */
+.tooltip {
+  position: absolute;
+  background: rgba(20, 20, 20, 0.95);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 14px;
   display: none;
+  pointer-events: none;
+  max-width: 250px;
+  line-height: 1.4;
+  border: 1px solid #444;
 }
