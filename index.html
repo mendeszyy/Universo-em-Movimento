@@ -1,30 +1,56 @@
+
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Universo em Movimento</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Universo e Planetas</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Universo em Movimento</h1>
-    <p>Explore os planetas do Sistema Solar</p>
-  </header>
+    <header>
+        <h1>Explorando o Universo</h1>
+        <p>Clique em um planeta para descobrir curiosidades e informações detalhadas.</p>
+    </header>
 
-  <main>
-    <div id="universe"></div>
-    <div id="info-panel" class="hidden">
-      <h2 id="planet-name"></h2>
-      <p id="planet-info"></p>
-    </div>
-  </main>
+    <main>
+        <section class="planetas-container">
+            <div class="planeta" id="mercurio" data-nome="Mercúrio">
+                <span>Mercúrio</span>
+            </div>
+            <div class="planeta" id="venus" data-nome="Vênus">
+                <span>Vênus</span>
+            </div>
+            <div class="planeta" id="terra" data-nome="Terra">
+                <span>Terra</span>
+            </div>
+            <div class="planeta" id="marte" data-nome="Marte">
+                <span>Marte</span>
+            </div>
+            <div class="planeta" id="jupiter" data-nome="Júpiter">
+                <span>Júpiter</span>
+            </div>
+            <div class="planeta" id="saturno" data-nome="Saturno">
+                <span>Saturno</span>
+            </div>
+            <div class="planeta" id="urano" data-nome="Urano">
+                <span>Urano</span>
+            </div>
+            <div class="planeta" id="netuno" data-nome="Netuno">
+                <span>Netuno</span>
+            </div>
+        </section>
 
-  <footer>
-    <p>Projeto desenvolvido para aprendizado em GitHub Pages</p>
-  </footer>
+        <section id="informacoes" class="informacoes">
+            <h2 id="nome-planeta">Clique em um planeta</h2>
+            <p id="descricao-planeta">Aqui você verá informações detalhadas sobre o planeta selecionado.</p>
+        </section>
+    </main>
 
-  <script src="script.js"></script>
+    <footer>
+        <p>Criador: <strong>IG: ieecaetanorocha</strong></p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
 
