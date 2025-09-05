@@ -1,63 +1,27 @@
-const universe = document.getElementById("universe");
-const infoPanel = document.getElementById("info-panel");
-const planetName = document.getElementById("planet-name");
-const planetInfo = document.getElementById("planet-info");
+const planetas = document.querySelectorAll('.planeta');
+const nomePlaneta = document.getElementById('nome-planeta');
+const descricaoPlaneta = document.getElementById('descricao-planeta');
 
-// Dados dos planetas
-const planets = [
-  { name: "Mercúrio", color: "gray", size: 10, orbit: 100, speed: 0.02, info: "O menor planeta e o mais próximo do Sol." },
-  { name: "Vênus", color: "goldenrod", size: 14, orbit: 150, speed: 0.015, info: "Conhecido como a estrela d’alva, tem atmosfera tóxica." },
-  { name: "Terra", color: "deepskyblue", size: 16, orbit: 200, speed: 0.01, info: "Nosso lar, o único planeta conhecido com vida." },
-  { name: "Marte", color: "orangered", size: 12, orbit: 250, speed: 0.008, info: "O planeta vermelho, possível destino de futuras colônias." },
-  { name: "Júpiter", color: "peru", size: 30, orbit: 320, speed: 0.006, info: "O maior planeta do Sistema Solar, com a Grande Mancha Vermelha." },
-  { name: "Saturno", color: "khaki", size: 26, orbit: 400, speed: 0.005, info: "Famoso por seus anéis compostos de gelo e rochas." },
-  { name: "Urano", color: "lightseagreen", size: 20, orbit: 470, speed: 0.004, info: "Um gigante gelado que gira de lado em relação ao Sol." },
-  { name: "Netuno", color: "royalblue", size: 20, orbit: 540, speed: 0.003, info: "O planeta mais distante, conhecido por seus ventos fortes." }
-];
+const infoPlanetas = {
+    Mercúrio: "Mercúrio é o planeta mais próximo do Sol e o menor do Sistema Solar. Possui temperaturas extremas e uma superfície cheia de crateras.",
+    Vênus: "Vênus é o planeta mais quente do Sistema Solar, com uma atmosfera densa de dióxido de carbono e nuvens de ácido sulfúrico. É conhecido como o planeta irmão da Terra.",
+    Terra: "A Terra é o único planeta conhecido que abriga vida. Possui água em estado líquido, atmosfera rica em oxigênio e uma variedade de ecossistemas.",
+    Marte: "Marte é conhecido como o planeta vermelho devido ao óxido de ferro em sua superfície. Tem calotas polares e evidências de água em forma de gelo.",
+    Júpiter: "Júpiter é o maior planeta do Sistema Solar. Possui uma grande mancha vermelha, que é uma tempestade gigante, e dezenas de luas.",
+    Saturno: "Saturno é famoso por seus impressionantes anéis compostos de gelo e rocha. É o segundo maior planeta e possui muitas luas, incluindo Titã.",
+    Urano: "Urano é um planeta gasoso com coloração azul esverdeada devido ao metano em sua atmosfera. Ele gira de lado em relação ao Sol.",
+    Netuno: "Netuno é o planeta mais distante do Sol no Sistema Solar. Possui ventos extremamente fortes e uma cor azul intensa, causada pelo metano."
+};
 
-// Adicionar o Sol
-const sun = document.createElement("div");
-sun.className = "sun";
-universe.appendChild(sun);
-
-// Criar órbitas e planetas
-planets.forEach(p => {
-  const orbit = document.createElement("div");
-  orbit.className = "orbit";
-  orbit.style.width = `${p.orbit * 2}px`;
-  orbit.style.height = `${p.orbit * 2}px`;
-  universe.appendChild(orbit);
-
-  const planet = document.createElement("div");
-  planet.className = "planet";
-  planet.style.width = `${p.size}px`;
-  planet.style.height = `${p.size}px`;
-  planet.style.background = p.color;
-  orbit.appendChild(planet);
-
-  p.element = planet;
-  p.angle = Math.random() * Math.PI * 2;
-
-  // Ao clicar, mostrar informações
-  planet.addEventListener("mouseenter", () => {
-    planetName.textContent = p.name;
-    planetInfo.textContent = p.info;
-    infoPanel.classList.add("visible");
-  });
-  planet.addEventListener("mouseleave", () => {
-    infoPanel.classList.remove("visible");
-  });
+planetas.forEach(planeta => {
+    planeta.addEventListener('click', () => {
+        // Remove escala de todos
+        planetas.forEach(p => p.style.transform = "scale(1)");
+        // Aumenta o planeta clicado
+        planeta.style.transform = "scale(1.5)";
+        // Atualiza informações
+        const nome = planeta.getAttribute('data-nome');
+        nomePlaneta.textContent = nome;
+        descricaoPlaneta.textContent = infoPlanetas[nome];
+    });
 });
-
-// Animação
-function animate() {
-  planets.forEach(p => {
-    p.angle += p.speed;
-    const x = p.orbit * Math.cos(p.angle);
-    const y = p.orbit * Math.sin(p.angle);
-    p.element.style.transform = `translate(${x}px, ${y}px)`;
-  });
-  requestAnimationFrame(animate);
-}
-
-animate();
